@@ -117,4 +117,4 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 */
 
-//Its Working class, uncomment to use
+//Its Working class, Basic authentication using in memory Db

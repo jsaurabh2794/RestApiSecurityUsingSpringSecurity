@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @Document(collection = "User")
-public class ApplicationUser implements UserDetails {
+public class CustomUserDetails implements UserDetails {
     @Id
     private String id;
     @Indexed

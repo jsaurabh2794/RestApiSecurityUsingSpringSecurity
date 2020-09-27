@@ -1,10 +1,10 @@
 package com.saurabh.springsecurity.service;
 
-import com.saurabh.springsecurity.collection.ApplicationUser;
+import com.saurabh.springsecurity.collection.CustomUserDetails;
 
 public interface MongoService {
 
-    public void registerUser(ApplicationUser user);
+    public void registerUser(CustomUserDetails user);
 
-    public ApplicationUser findUserByUserName(String username);
+    public CustomUserDetails findUserByUserName(String username);
 }

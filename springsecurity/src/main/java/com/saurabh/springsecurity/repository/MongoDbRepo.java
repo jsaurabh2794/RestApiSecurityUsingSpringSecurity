@@ -1,13 +1,13 @@
 package com.saurabh.springsecurity.repository;
 
-import com.saurabh.springsecurity.collection.ApplicationUser;
+import com.saurabh.springsecurity.collection.CustomUserDetails;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository("mongodbRepository")
-public interface MongoDbRepo extends MongoRepository<ApplicationUser, Integer> {
+public interface MongoDbRepo extends MongoRepository<CustomUserDetails, Integer> {
 
-    public ApplicationUser findByUserName(String userName);
+    public CustomUserDetails findByUserName(String userName);
 
-    public ApplicationUser findById(int id);
+    public CustomUserDetails findById(int id);
 }

@@ -1,6 +1,6 @@
 package com.saurabh.springsecurity.controller;
 
-import com.saurabh.springsecurity.collection.ApplicationUser;
+import com.saurabh.springsecurity.collection.CustomUserDetails;
 import com.saurabh.springsecurity.model.UserDetailsForSignUp;
 import com.saurabh.springsecurity.service.MongoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class RegistrationController {
         String id = String.valueOf(random.nextInt(10000));
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<GrantedAuthority>();
         user.getRole().stream().forEach(role -> grantedAuthorityList.add(new SimpleGrantedAuthority(role.getMessage())));
-        ApplicationUser applicationUser = new ApplicationUser(
+        CustomUserDetails customUserDetails = new CustomUserDetails(
                 id,
                 user.getUserName(),
                 passwordEncoder.encode(user.getPassword()),
@@ -40,7 +40,7 @@ public class RegistrationController {
                 true,
                 true,
                 true);
-        mongoService.registerUser(applicationUser);
+        mongoService.registerUser(customUserDetails);
         return "Successfully registered!!";
     }
 }

@@ -1,7 +1,6 @@
+/*
 package com.saurabh.springsecurity.config;
 
-import com.saurabh.springsecurity.collection.ApplicationUserDetailsService;
-import com.saurabh.springsecurity.model.ApplicationRole;
 import com.saurabh.springsecurity.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,7 +30,8 @@ public class SpringSecurityConfigV3 extends WebSecurityConfigurerAdapter {
     @Qualifier("applicationUserDetailsService")
     private UserDetailsService userDetailsService;
 
-    /*@Override
+    */
+/*@Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
@@ -39,9 +39,11 @@ public class SpringSecurityConfigV3 extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .httpBasic(); // basic Authentication
-    }*/
+    }*//*
 
-    /*@Override
+
+ */
+/*@Override
     protected void configure(HttpSecurity http) throws Exception {
         //Using ant-matcher, we can whitelist some url
         http
@@ -52,10 +54,12 @@ public class SpringSecurityConfigV3 extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .httpBasic(); // basic Authentication using antmatcher which whitelist url based on regex
-    }*/
+    }*//*
+
 
     //using Role and Authority
-    /*@Override
+    */
+/*@Override
     protected void configure(HttpSecurity http) throws Exception {
         //Using ant-matcher, we can whitelist some url
         http
@@ -70,7 +74,8 @@ public class SpringSecurityConfigV3 extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .httpBasic(); // basic Authentication using antmatcher which whitelist url based on regex
-    }*/
+    }*//*
+
 
     //Using Form Authentication
     @Override
@@ -80,8 +85,8 @@ public class SpringSecurityConfigV3 extends WebSecurityConfigurerAdapter {
                 .csrf().disable() // CSRF is required when request goes from browser, otherwise not required.
                 .authorizeRequests()
                 .antMatchers("/", "index", "/css/*", "/js/*", "/signup/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/v2/**").hasRole(String.valueOf(ApplicationRole.ADMIN)) //POST Api starts with /api/v2/** can be access by ADMIN Role.
-                .antMatchers(HttpMethod.DELETE, "/api/v2/**").hasRole(String.valueOf(ApplicationRole.ADMIN)) //DELETE Api starts with /api/v2/** can be access by ADMIN Role.
+                .antMatchers(HttpMethod.POST, "/api/v2/**").hasRole(Role.ADMIN.getMessage()) //POST Api starts with /api/v2/** can be access by ADMIN Role.
+                .antMatchers(HttpMethod.DELETE, "/api/v2/**").hasAuthority(Role.ADMIN.getMessage()) //DELETE Api starts with /api/v2/** can be access by ADMIN Role.
                 .antMatchers(HttpMethod.GET, "/api/**").hasAnyAuthority(Role.STUDENT.getMessage()) //GET Api starts with /api/ can be access by STUDENT.
                 .anyRequest()
                 .authenticated()
@@ -103,7 +108,9 @@ public class SpringSecurityConfigV3 extends WebSecurityConfigurerAdapter {
                 .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
                 .logoutSuccessUrl("/CustomLogin")
-        /*.rememberMeParameter("remember-me")*/; //Default name is 'remember-me'
+        */
+/*.rememberMeParameter("remember-me")*//*
+; //Default name is 'remember-me'
 
         //Default login handler is /login with POST username and password
     }
@@ -126,3 +133,6 @@ public class SpringSecurityConfigV3 extends WebSecurityConfigurerAdapter {
     }
 
 }
+
+//Using Form Login Authentication with Database
+*/

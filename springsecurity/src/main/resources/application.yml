@@ -2,3 +2,13 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/MONGO_SRB
+
+application:
+  jwt:
+    secureKey: GiveSomeRandomStringGiveSomeRandomStringGiveSomeRandomStringGiveSomeRandomStringGiveSomeRandomStringGiveSomeRandomStringGiveSomeRandomString
+    claimHeaderName: authorities
+    noOfDaysToExpireToken: 2
+    tokenHeaderName: Authorization
+    tokenPrefix: Bearer
+
+

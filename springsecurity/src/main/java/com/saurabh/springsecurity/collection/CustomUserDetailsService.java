@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service("applicationUserDetailsService")
-public class ApplicationUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private MongoService mongoService;
@@ -16,7 +16,7 @@ public class ApplicationUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
-        ApplicationUser user = null;
+        CustomUserDetails user = null;
         try {
             user = mongoService.findUserByUserName(s);
         } catch (Exception ex) {
